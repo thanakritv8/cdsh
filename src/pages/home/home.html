@@ -6,24 +6,24 @@
 
 <ion-content padding>
   <div *ngIf="statusLogin; else loginTemplate">
-    <h1>Welcome, {{displayName}}!</h1>
+    <h1>Welcome, {{email}}!</h1>
     
     <!--<ion-item *ngFor="let item of arrData; let i = index">
       <ion-label><ion-icon [name]="myIcon" [color]="myIconColor"></ion-icon> {{item.name}}</ion-label>
       <ion-toggle (ionChange)="toggleUpdate(item)" [(ngModel)]="item.status"></ion-toggle>
     </ion-item>-->
 
-    <!--<ul>
+    <ul>
       <li *ngFor="let item of arrData | async | json">
          {{ item.name }}
       </li>
-    </ul>-->
-    <h1>{{ arrData | async | json }}</h1>
+    </ul>
+    <!--<h1>{{ arrData | async | json }}</h1>-->
 
     <p><button ion-button (click)="logoutUser()">Logout From Google</button></p>
   </div>
   <ng-template #loginTemplate>
-    <button ion-button block color="danger" (click)="login()">
+    <button ion-button block color="danger" (click)="loginGoogle()">
       <ion-icon name="logo-googleplus"></ion-icon>
       Login with Google
     </button>
