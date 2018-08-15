@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AngularFireDatabase} from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { GooglePlus } from '@ionic-native/google-plus';
 import firebase from 'firebase';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  itemRef: AngularFireObject<any>;
   arrData: Observable<any>;
   constructor(public navCtrl: NavController,public googleplus: GooglePlus, private fdb: AngularFireDatabase) {
     //this.navCtrl = navCtrl;
@@ -21,6 +21,12 @@ export class HomePage {
 
       console.log(this.arrData);
     });*/
+    this.itemRef = fdb.object('Thung');
+    this.itemRef.snapshotChanges().subscribe(action => {
+    console.log(action.type);
+    console.log(action.key)
+    console.log(action.payload.val().IO1.name)
+});
   }
 
   myIcon: string = "bulb";
