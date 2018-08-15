@@ -8,10 +8,17 @@
   <div *ngIf="statusLogin; else loginTemplate">
     <h1>Welcome, {{displayName}}!</h1>
     
-    <ion-item *ngFor="let item of arrData; let i = index">
+    <!--<ion-item *ngFor="let item of arrData; let i = index">
       <ion-label><ion-icon [name]="myIcon" [color]="myIconColor"></ion-icon> {{item.name}}</ion-label>
       <ion-toggle (ionChange)="toggleUpdate(item)" [(ngModel)]="item.status"></ion-toggle>
-    </ion-item>
+    </ion-item>-->
+
+    <!--<ul>
+      <li *ngFor="let item of arrData | async | json">
+         {{ item.name }}
+      </li>
+    </ul>-->
+    <h1>{{ arrData | async | json }}</h1>
 
     <p><button ion-button (click)="logoutUser()">Logout From Google</button></p>
   </div>
